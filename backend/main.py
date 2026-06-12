@@ -69,9 +69,17 @@ app = FastAPI(title="Blog API")
 # [실습 1] Route Handler 방식에서는 CORS 불필요
 #   브라우저 → Next.js Route Handler(같은 출처) → FastAPI 순서로 호출되며,
 #   FastAPI 를 호출하는 주체가 브라우저가 아닌 서버이므로 CORS 제약이 없습니다.
+
+FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000")
+
+origins=[
+    "http://localhost:3000",
+    FRONTEND_URL
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # [실습 1] Direct Fetch 허용 출처
+    allow_origins=[],  # [실습 1] Direct Fetch 허용 출처
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
