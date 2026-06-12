@@ -79,7 +79,7 @@ origins=[
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[],  # [실습 1] Direct Fetch 허용 출처
+    allow_origins=origins,  # [실습 1] Direct Fetch 허용 출처
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
